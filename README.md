@@ -13,7 +13,7 @@ O projeto inclui três rotas principais:
 - `/products` e `/customers` possuem todas as funcionalidades de persistência de dados: `getAll`, `getById`, `insert`, `updateById`, e `deleteById`.
 - `/orders` oferece apenas `getAll` e `getById`.
 
-Foi implementado, também, o banco de dados __em memória__ para testes dos recursos previamente mencionados. A __URL__ de acesso por padrão é jdbc:h2:mem:dbtest, __usuário__ sa e __não possui senha__. Os campos podem ser encontrados e editados no arquivo ``application-test.properties``. 
+Foi implementado, também, o banco de dados __em memória__ para testes dos recursos previamente mencionados. A __URL__ de acesso por padrão é jdbc:h2:mem:dbtest, __usuário__ sa e __não possui senha__. Os campos podem ser encontrados e editados no arquivo ``application-test.properties``.
 
 ## Tecnologias utilizadas 💻
 
@@ -22,6 +22,10 @@ Foi implementado, também, o banco de dados __em memória__ para testes dos recu
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=lightblue)
+
+<details>
+
+<summary> <strong>Instalação do projeto</strong></summary>
 
 ## Pré-requisitos
 
@@ -32,21 +36,29 @@ Certifique-se que o Maven está instalado em sua máquina para rodar a aplicaç�
 Realize os passos abaixo para rodar localmente este projeto:
 
 1. Clone esse repositório:
-``https://github.com/lucas-h-lopes/spring-boot-first-steps.git``
+   ``https://github.com/lucas-h-lopes/spring-boot-first-steps.git``
 
 2. No seu terminal, acesse o caminho do projeto com:
-``cd caminho_do_projeto``
+   ``cd caminho_do_projeto``
 
 3. Execute o comando:
-``mvn spring-boot:run``
+   ``mvn spring-boot:run``
 
-Ao finalizar este procedimento, a aplicação poderá ser encontrada na url padrão localhost:8080.
+Ao finalizar este procedimento, a aplicação poderá ser encontrada na URL padrão **localhost:8080**.
+
+</details>
+
+
 
 ## Visualização do projeto 👀
 
 Para visualizar os registros no banco de dados h2, acesse ``localhost:8080/h2-console`` e utilize as credenciais configuradas.
 
-### Customers 🧑🏻‍🦱
+
+<details>
+
+
+<summary><strong>Customers🧑🏻‍</strong></summary>
 
 #### GET
 
@@ -91,7 +103,7 @@ Tentando atualizar um registro inexistente:
 Tentando atualizar o email de um registro para um email já cadastrado:
 
 ![img](images/img_9.png)
- 
+
 Tentando atualizar o nome de um registro para um menor que 3 caracteres (possui as mesmas validações de inserção):
 
 ![img](images/img_10.png)
@@ -106,7 +118,14 @@ Tentando excluir um registro que não existe:
 
 ![img](images/img_13.png)
 
-### Products 🧽
+</details>
+
+<br>
+
+<details>
+<summary><strong>Products 🧽</strong></summary>
+
+
 
 #### GET
 
@@ -168,9 +187,15 @@ Tentando excluir um registro que não existe:
 
 ![img](images/img_26.png)
 
-### Orders 📜
+</details>
 
-### GET
+<br>
+
+<details>
+<summary><strong>Orders 📜</strong></summary>
+
+
+#### GET
 
 Listagem de todas as Orders:
 
@@ -184,4 +209,4 @@ Tentando listar uma Order que não existe:
 
 ![img](images/img_29.png)
 
-
+</details>
