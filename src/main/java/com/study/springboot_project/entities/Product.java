@@ -1,37 +1,37 @@
 package com.study.springboot_project.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+
 @Entity
+@Table(name = "tb_product")
 @NoArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Name: Can't be blank")
+    @Size(min = 2, max = 40, message = "Name: Must have 2 to 40 characters")
     private String name;
+    @NotNull(message = "Price: Can't be null")
+    @Min(value = 1, message = "Price: Can't be lower than 1")
     private Double price;
-    private Integer quantity;
+    @NotNull(message = "In_stock: Can't be null")
+    @Min(value = 0, message = "In_stock: Can't be a negative number")
+    private Integer in_stock;
 
-    public Product(String name, Double price, Integer quantity){
+    public Product(String name, Double price, Integer in_stock){
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
+        this.in_stock = in_stock;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-    public Customer getCustomer(){
-        return customer;
-    }
-
-    public void setCustomer(Customer customer){
-        this.customer = customer;
-        customer.getProducts().add(this);
-    }
 
     public Long getId() {
         return id;
@@ -53,11 +53,24 @@ public class Product {
         this.price = price;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getIn_stock() {
+        return in_stock;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setIn_stock(Integer in_stock) {
+        this.in_stock = in_stock;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }
